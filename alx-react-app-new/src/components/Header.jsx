@@ -5,7 +5,8 @@ import React from 'react'
     <header style={{
       backgroundColor: 'navy',
       color: '#fff',
-      alignItems: 'center'
+      alignItems: 'center',
+      textAlign: 'center'
       }}>
       <h1>My Favorite Cities", "header"</h1>
     </header>
