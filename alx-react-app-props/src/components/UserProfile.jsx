@@ -1,6 +1,6 @@
 import UserDetails from "./UserDetails";
 
-function ProfilePage(){
+function UserProfile(){
   return <UserDetails />
 }
-export default ProfilePage
+export default UserProfile
