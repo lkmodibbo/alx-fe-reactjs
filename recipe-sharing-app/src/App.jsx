@@ -1,4 +1,4 @@
-import { RecipeForm } from './components/RecipeForm'
+import  AddRecipeForm  from './components/AddRecipeForm'
 import './App.css'
 import RecipeList from './components/RecipeList'
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
    <div>
-    <RecipeForm />
+    <AddRecipeForm />
     <RecipeList />
    </div>
   )
