@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useRecipeStore } from "./recipeStore";
+import useRecipeStore from "../store/recipeStore";
+
+
 const AddRecipeForm = () => {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
   const [title, setTitle] = useState("");
@@ -16,34 +18,35 @@ const AddRecipeForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 space-y-4"
+      className="max-w-md mx-auto bg-black text-white shadow-2xl rounded-2xl p-8 space-y-5"
     >
-      <h2 className="text-xl font-semibold text-gray-800 text-center">
-        Add a New Recipe
+      <h2 className="text-2xl font-bold text-center tracking-wide text-yellow-400">
+        🍳 Add a New Recipe
       </h2>
 
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+        placeholder="Recipe Title ✨"
+        className="w-full px-4 py-3 border border-gray-600 bg-gray-900 text-white rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition"
       />
 
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none min-h-[100px]"
+        placeholder="Recipe Description 📝"
+        className="w-full px-4 py-3 border border-gray-600 bg-gray-900 text-white rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition min-h-[120px]"
       />
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+        className="w-full bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-black py-3 rounded-xl font-semibold hover:scale-105 active:scale-95 transition transform duration-300 shadow-lg"
       >
-        Add Recipe
+        🚀 Add Recipe
       </button>
     </form>
   );
 };
-export default AddRecipeForm
+
+export default AddRecipeForm;
