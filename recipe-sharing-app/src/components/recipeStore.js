@@ -1,33 +1,21 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+// store/recipeStore.js
+import { create } from 'zustand';
 
-export const useRecipeStore = create(
-  persist(
+const useRecipeStore = create((set, get) => ({
+  recipes: [],
+  searchTerm: '',
 
-    (set) => ({   
-      recipes: [],
+  // Setters
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  setRecipes: (recipes) => set({ recipes }),
 
-      addRecipe: (newRecipe) => 
-        set((state) => ({ recipes: [...state.recipes, newRecipe] })),
-      
-      deleteRecipe: (id) =>
-        set((state) => ({ recipes: state.recipes.filter((r) => r.id !== id) })),
+  // Derived state (filter dynamically)
+  get filteredRecipes() {
+    const { recipes, searchTerm } = get();
+    return recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  },
+}));
 
-
-      updateRecipe: (id, updates) => 
-        set((state) => ({
-          recipes:state.recipes.map((r) => (r.id === id ? {...r, ...updates} : r))
-        })),
-
-        setRecipes: (recipes) => set({ recipes }),
-        clearRecipes: () => set({recipes: []})
-      
-    }), 
-    {
-      name: 'recipe-storage',
-      getStorage: () => localStorage
-    }
-  
-  )
-  );
- 
+export default useRecipeStore;
