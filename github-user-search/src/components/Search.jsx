@@ -24,7 +24,7 @@ export default function Search() {
       const data = await fetchUserData(name);
       setUser(data);
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");
       console.log(err)
     } finally {
       setLoading(false);
