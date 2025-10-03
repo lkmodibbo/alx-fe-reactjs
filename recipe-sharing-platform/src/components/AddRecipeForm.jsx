@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export const RecipeForm = ({ setRecipes }) => {
+export const AddRecipeForm = ({ setRecipes }) => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [steps, setSteps] = useState('')
