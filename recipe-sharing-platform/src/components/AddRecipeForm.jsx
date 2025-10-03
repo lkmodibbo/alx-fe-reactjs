@@ -5,7 +5,7 @@ export const AddRecipeForm = ({ setRecipes }) => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [steps, setSteps] = useState('')
-    const [error, setError] = useState({});
+    const [errors, setErrors] = useState({});
 
     const validate = () => {
         let tempErrors = {}
@@ -13,7 +13,7 @@ export const AddRecipeForm = ({ setRecipes }) => {
         if (!ingredients.trim()) tempErrors.ingredients = "ingredients are required";
         if (!steps.trim()) tempErrors.steps = "Prepations Steps are required"
 
-        setError(tempErrors)
+        setErrors(tempErrors);
 
         return Object.keys(tempErrors).length === "0"
     }
@@ -22,10 +22,12 @@ export const AddRecipeForm = ({ setRecipes }) => {
         e.preventDefault()
         if (!validate())
             return;
+
+        setErrors({});
     }
 
     if(!title || !ingredients || !setSteps ){
-        setError('All fields are required');
+        setErrors('All fields are required');
         return;
     }
     const newRecipe = {
@@ -42,15 +44,15 @@ export const AddRecipeForm = ({ setRecipes }) => {
     setTitle('');
     setIngredients('');
     setSteps('');
-    setError('')
+    setErrors('')
 
   return (
    <form 
         onSubmit={handleSubmit} 
         className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg space-y-4">
     <h2 className="text-2xl font-bold text-center">Add a new Recipe</h2>
-    { error && (
-        <div className="text-red-600 font-medium">{error}</div>
+    { errors && (
+        <div className="text-red-600 font-medium">{errors}</div>
     )}
     <div>
         <label className="block text-gray-700 font-medium mb-1">Recipe Title</label>
