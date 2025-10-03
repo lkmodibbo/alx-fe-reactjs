@@ -5,10 +5,23 @@ export const AddRecipeForm = ({ setRecipes }) => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [steps, setSteps] = useState('')
-    const [error, setError] = useState('');
+    const [error, setError] = useState({});
+
+    const validate = () => {
+        let tempErrors = {}
+        if (!title.trim()) tempErrors.title = "Recipe title is required";
+        if (!ingredients.trim()) tempErrors.ingredients = "ingredients are required";
+        if (!steps.trim()) tempErrors.steps = "Prepations Steps are required"
+
+        setError(tempErrors)
+
+        return Object.keys(tempErrors).length === "0"
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!validate())
+            return;
     }
 
     if(!title || !ingredients || !setSteps ){
