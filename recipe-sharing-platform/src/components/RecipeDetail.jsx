@@ -24,14 +24,14 @@ import recipeData from '../data.json'
         className="w-full h-64 object-cover rounded-lg mb-4"
         src={recipe.image} alt="recipe image" />
       <p className='text-gray-600 text-lg leading-relaxed'>{recipe.summary}</p>
-      <h2>Ingredients:</h2>
-      <ul>
+      <h2 className='text-2xl font-semibold mb-2'>Ingredients:</h2>
+      <ul className='list-disc list-inside mb-4'>
         {recipe.ingredients.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </ul>
-      <h2>Instructions</h2>
-      <ol>
+      <h2 className='text-2xl font-semibold mb-2'>Instructions</h2>
+      <ol className='list-decimal list-inside'>
         {recipe.instructions.map((step, index) => (
           <li key={index}>{step}</li>
         ))}
